@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Post;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class PostItem extends Component
@@ -10,10 +11,17 @@ class PostItem extends Component
 
     public bool $edit =false;
 
-    public function destroy($id)
+    #[On('updating')]
+    public function updating($updating)
+    {
+        $this->edit = $updating;
+
+    }
+
+    public function destroy(Post $post)
     {
 //        dd($id);
-       $post =   Post::find($id);
+//       $post =   Post::find($id);
 
         $this->authorize('delete', $post);
         //above deals with policy

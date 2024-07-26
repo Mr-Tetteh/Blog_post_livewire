@@ -5,11 +5,11 @@
 
         @if($edit)
             <div class="update-form ">
-                <livewire:post-update/>
+                <livewire:post-update :post="$post"/>
             </div>
         @endif
         <div>
-            <button wire:click="$toggle('edit')" class="text-blue-500 ">Edit</button>
+            <button wire:click="$toggle('edit')" class="text-blue-500 rounded bg-blue-950">Edit</button>
         </div>
     </td>
     <td class="px-6 py-3">{{$post->body}}</td>

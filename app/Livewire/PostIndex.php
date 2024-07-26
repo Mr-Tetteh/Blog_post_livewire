@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
-use App\Models\Post;
+use App\Livewire\Forms\PostFrom;
+
+//use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
@@ -11,26 +13,30 @@ use Livewire\WithPagination;
 
 class PostIndex extends Component
 {
+    public PostFrom $form;
 
     use WithPagination;
 
+
     public $title = "";
-    public $description = "";
+    public $body = "";
 
 
-    public function createe(Request $request)
+    public function create(Request $request)
     {
-        $this->validate([
-            'title'=> 'required',
-            'description' => 'required'
-        ]);
-        Auth::user()->posts()->create([
-            'title' => $this->title,
-            'body' => $this->description
-        ]);
 
-        $this->title = '';
-        $this->description = '';
+        $this->form->store();
+        //        $this->validate([
+//            'title'=> 'required',
+//            'description' => 'required'
+//        ]);
+//        Auth::user()->posts()->create([
+//            'title' => $this->title,
+//            'body' => $this->description
+//        ]);
+//
+//        $this->title = '';
+//        $this->body = '';
 
         session()->flash('message', 'Post successfully created.');
     }

@@ -1,8 +1,8 @@
-<form wire:submit.prevent="submit">
+<form wire:submit="submit">
     <div class=" grid grid-cols-2 gap-2">
         <div class="mb-0 pb-0 py-0">
-            <input class="rounded py-2 px-3 mb-2 w-full" type="text" id="title">
-            <input class="rounded py-2 px-3 w-full" type="text" id="body">
+            <input wire:model="title" class="rounded py-2 px-3 mb-2 w-full text-zinc-950" type="text" placeholder="Title" id="title">
+            <input wire:model="body"  class="rounded py-2 px-3 w-full text-zinc-950 " placeholder="body" type="text" id="body">
         </div>
 
         <div>

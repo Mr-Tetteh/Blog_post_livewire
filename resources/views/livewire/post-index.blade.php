@@ -1,7 +1,7 @@
 <div class="grid grid-cols-3  gap-2">
     <div class="container-1 ">
         <div class="w-full max-w-xs">
-            <form wire:submit.prevent="createe" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form wire:submit="create" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
 
                 <div>
                     @if (session()->has('message'))
@@ -16,20 +16,21 @@
                         Title
                     </label>
                     <input
-                        wire:model="title"
+{{--                        form.title was used when we used PostForm--}}
+                        wire:model="form.title"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="title" type="text" placeholder="title">
-                    @error('title')
+                    @error('form.title')
                     <div class="text-red-500">{{$message}}</div>
                     @enderror
                 </div>
 
                 <div class="mb-6">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="description"> Description</label>
-                    <textarea wire:model="description" class="rounded block text-gray-700 text-sm font-bold mb-2"
+                    <textarea wire:model="form.body" class="rounded block text-gray-700 text-sm font-bold mb-2"
                               id="description" rows="5" cols="30"> </textarea>
 
-                    @error('description')
+                    @error('form.body')
                     <div class="text-red-500">{{$message}}</div>
                     @enderror
                 </div>
